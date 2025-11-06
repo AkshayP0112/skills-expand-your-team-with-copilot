@@ -1,4 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Create animated Git branch lines
+  function createBranchLines() {
+    const container = document.getElementById("git-branches");
+    const numBranches = 8;
+    
+    for (let i = 0; i < numBranches; i++) {
+      const line = document.createElement("div");
+      line.className = "branch-line";
+      
+      // Random positioning and animation
+      const leftPos = (i / numBranches) * 100 + Math.random() * 10;
+      const height = 100 + Math.random() * 200;
+      const duration = 15 + Math.random() * 10;
+      const delay = Math.random() * 5;
+      const animationName = `branch-move-${(i % 3) + 1}`;
+      
+      line.style.left = `${leftPos}%`;
+      line.style.height = `${height}px`;
+      line.style.animationName = animationName;
+      line.style.animationDuration = `${duration}s`;
+      line.style.animationDelay = `${delay}s`;
+      
+      container.appendChild(line);
+    }
+  }
+  
+  createBranchLines();
+
   // DOM elements
   const activitiesList = document.getElementById("activities-list");
   const messageDiv = document.getElementById("message");
